@@ -10,15 +10,31 @@
 
 采用通用 SKILL.md 与 YAML frontmatter，不包含平台专属连接器、产品白名单、私有路径、API密钥或外部服务依赖。
 
-## 在豆包工作中安装
+## 从 GitHub 安装
 
-使用豆包工作的技能新建或导入流程安装本仓库中的技能目录。若使用对话安装，可在技能创建入口提出：
+技能源代码在本 GitHub 仓库，使用 Vercel 的 [skills CLI](https://github.com/vercel-labs/skills) 时，可在具备 Node.js / npx 的终端执行：
 
-> 请从 https://github.com/Nuomij/tailor-evidence-resume 安装 skills/tailor-evidence-resume 技能，保留主文件和配套 references 目录。
+```bash
+npx skills add https://github.com/Nuomij/tailor-evidence-resume --skill tailor-evidence-resume
+```
 
-这是安装请求；日常使用无需粘贴技能全文。安装完成后请检查技能列表中已出现该技能，再上传原简历和目标岗位要求。
+安装器会让你选择支持的目标客户端和安装范围。这里的 npm 包 `skills` 是安装器；本技能从 GitHub 下载，无需另行发布为 npm 包。
 
-各客户端的入口和仓库读取能力可能不同；若对话无法访问GitHub，可先下载仓库，再通过该客户端提供的本地技能导入方式安装。当前版本已完成结构校验和模拟任务测试，尚未在豆包客户端实测安装。
+只检查仓库中有哪些技能、不安装：
+
+```bash
+npx skills add https://github.com/Nuomij/tailor-evidence-resume --list
+```
+
+本仓库的 `skills/tailor-evidence-resume/SKILL.md` 位于该安装器文档列出的发现路径中。上述命令语法和目录结构已按官方文档核对，尚未完成安装器端到端安装实测。
+
+## 豆包兼容状态
+
+本技能使用通用 SKILL.md 格式，但“格式通用”不代表所有客户端使用同一安装命令。
+
+截至 2026-10-19，skills CLI 官方支持列表未单列豆包，因此上面的命令不能被视为已经验证的豆包专用安装方式，也不要自行添加未经支持的 `--agent doubao`。
+
+此前建议直接向豆包发送仓库链接安装，尚未经过豆包客户端验证，已撤下这一操作指引。豆包的准确安装步骤仍需根据其当前支持的安装器或导入入口确认；安装后应在豆包技能列表中检查，再进行真实任务测试。
 
 豆包官方技能能力介绍：https://open.doubao.com/
 
